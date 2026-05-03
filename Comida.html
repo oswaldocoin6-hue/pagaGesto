@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comida - Plafinago</title>
+    <link rel="icon" type="image/svg+xml" href="logo-icon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="tailwind-config.js"></script>
+
+    <!-- PWA & Apple Support Protocols -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#fbbf24">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Plafinago">
+    <link rel="apple-touch-icon" href="logo-icon.svg">
+  </head>
+  <body class="overflow-x-hidden bg-navy-950 text-white font-outfit">
+    <!-- Efectos de Fondo Tácticos -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-navy-950">
+        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-500/10 rounded-full blur-[150px] animate-pulse"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-yellow-400/5 rounded-full blur-[150px] animate-pulse" style="animation-delay: 2s"></div>
+        
+        <!-- Scanlines & Overlay -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 2px, 3px 100%;"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/50 opacity-60"></div>
+    </div>
+
+    <!-- MODULAR NAVIGATION -->
+    <div id="layout-nav"></div>
+
+    <div id="app" class="relative z-10 lg:pl-64 transition-all duration-300">
+      <main class="p-4 md:p-8 lg:p-10 pb-24 lg:pb-10 max-w-7xl mx-auto">
+        
+        <!-- Global HUD Header (Tactical) -->
+        <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 md:mb-12 bg-navy-900/60 backdrop-blur-md p-5 md:p-8 border border-white/5 bracket-corners relative overflow-hidden group shadow-2xl">
+            <div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-40 transition-opacity">
+              <i class="fa-solid fa-microchip text-yellow-400 text-[10px] animate-pulse"></i>
+            </div>
+            
+            <div class="flex items-center gap-4 md:gap-6">
+                <div class="relative shrink-0">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-yellow-400/5 border border-yellow-400/20 rounded-full flex items-center justify-center text-yellow-400 text-xl md:text-2xl shadow-[0_0_20px_rgba(251,191,36,0.1)]">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 md:w-5 md:h-5 bg-emerald-500 border-2 md:border-4 border-navy-900 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                </div>
+                <div>
+                    <h2 class="text-[9px] md:text-xs font-bold text-emerald-400/60 uppercase tracking-[0.4em] mb-1">Modulo: Nutricional</h2>
+                    <h1 class="text-xl md:text-3xl font-black tracking-tighter uppercase italic text-white">CONTROL DE <span class="text-white/30 font-light not-italic">Comida</span></h1>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 md:gap-4 self-end md:self-center">
+                <div onclick="openMasterModal('conexion')" class="hidden md:flex bg-black/40 border border-white/5 px-4 md:px-6 py-2 md:py-3 items-center gap-3 rounded-sm cursor-pointer hover:bg-white/5 transition-all">
+                    <i class="fa-solid fa-clock text-yellow-400/50 text-xs"></i>
+                    <span id="real-clock" class="font-mono text-[10px] md:text-sm font-bold tracking-widest text-white/80">12:45:00 AM</span>
+                </div>
+                <button id="header-new-expense" onclick="openMasterModal('dieta')" class="bg-yellow-400 text-navy-950 px-4 md:px-6 py-2 md:py-3 flex items-center gap-3 font-black text-xs md:text-sm tracking-tighter shadow-[0_0_20px_rgba(251,191,36,0.2)] hover:bg-white transition-all active:scale-95">
+                    <i class="fa-solid fa-bowl-food"></i>
+                    <span class="uppercase">Registrar Dieta</span>
+                </button>
+            </div>
+        </header>
+        <div id="diet-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- JS Population -->
+          <div class="col-span-full py-20 text-center opacity-20 italic">Cargando Plan Nutricional...</div>
+        </div> </div>
+      </main>
+      <!-- MODAL CONTAINER -->
+      <div id="modal-container"></div>
+    </div>
+    <script src="commonIcons.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
